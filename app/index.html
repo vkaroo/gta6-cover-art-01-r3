@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sunset Cover Studio — GTA 6-style cover art maker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <h1>Sunset Cover Studio</h1>
+  <p>Turn a photo and a caption into a multi-panel poster cover, and export it as a PNG to share. Your photos never leave this machine.</p>
+</header>
+<main class="workbench">
+  <aside class="controls">
+    <section>
+      <h2 id="panelLabel">Photo — Panel 1 of 3</h2>
+      <label class="upload">Upload a photo
+        <input type="file" id="upload" accept="image/*">
+      </label>
+      <div class="samples" id="samples"></div>
+      <button type="button" id="fillAll">Use this photo in every panel</button>
+      <label>Zoom <span id="zoomVal">100%</span>
+        <input type="range" id="zoom" min="100" max="300" value="100">
+      </label>
+      <button type="button" id="resetPos">Reset position</button>
+      <p class="hint">Click a panel in the preview to select it, then drag it to move its photo.</p>
+      <div class="panel-pick">
+        <button type="button" data-panel="0" class="active">Panel 1</button>
+        <button type="button" data-panel="1">Panel 2</button>
+        <button type="button" data-panel="2">Panel 3</button>
+        <button type="button" data-panel="3">Panel 4</button>
+      </div>
+    </section>
+    <section>
+      <h2>Layout</h2>
+      <div class="choices">
+        <button type="button" data-layout="vice" class="active">Vice</button>
+        <button type="button" data-layout="streets">Streets</button>
+        <button type="button" data-layout="solo">Solo</button>
+      </div>
+    </section>
+    <section>
+      <h2>Colour grade</h2>
+      <div class="choices">
+        <button type="button" data-grade="sunset" class="active">Sunset</button>
+        <button type="button" data-grade="neon">Neon</button>
+        <button type="button" data-grade="palm">Palm</button>
+        <button type="button" data-grade="noir">Noir</button>
+      </div>
+    </section>
+    <section>
+      <h2>Caption</h2>
+      <label>Title
+        <input type="text" id="titleInput" value="SUNSET HEIST" maxlength="24">
+      </label>
+      <label>Subtitle
+        <input type="text" id="subtitleInput" value="NEON NIGHTS" maxlength="32">
+      </label>
+    </section>
+    <section>
+      <h2>Export</h2>
+      <div class="choices">
+        <button type="button" data-size="1080x1080">1080 × 1080</button>
+        <button type="button" data-size="1080x1350" class="active">1080 × 1350</button>
+        <button type="button" data-size="1920x1080">1920 × 1080</button>
+      </div>
+      <div class="choices export">
+        <button type="button" data-export="1080x1080">Export square</button>
+        <button type="button" data-export="1080x1350">Export portrait</button>
+        <button type="button" data-export="1920x1080">Export wide</button>
+        <button type="button" id="exportAll">Export all three sizes</button>
+      </div>
+      <p class="hint">Export all downloads the square, portrait and wide PNGs in one click.</p>
+    </section>
+  </aside>
+  <section class="stage">
+    <canvas id="preview" width="1080" height="1350"></canvas>
+    <canvas id="shotCanvas" width="1920" height="1080"></canvas>
+  </section>
+</main>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
